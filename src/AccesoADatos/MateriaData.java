@@ -49,7 +49,6 @@ public class MateriaData {
         } catch (SQLException ex) {    
             Utilidades.mostrarDialogoTemporal("Tabla materia",  "Error al acceder a la tabla materia " + ex.getMessage(), 2000);
         }
-   
     } 
     
     public Materia buscarMateria(int id) {
