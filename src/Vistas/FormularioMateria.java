@@ -175,6 +175,11 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTmaterias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTmateriasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTmaterias);
 
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 360, 160));
@@ -245,11 +250,8 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private void jBlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarActionPerformed
         
-        jtCodigo.setText("");
-        jtNombre.setText("");
-        jtAnio.setText("");
-        jrEstado.setSelected(false);
-        
+        limpiar();
+       
     }//GEN-LAST:event_jBlimpiarActionPerformed
 
     private void jtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCodigoKeyTyped
@@ -268,8 +270,16 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtAnioKeyTyped
 
     private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
     }//GEN-LAST:event_jBmodificarActionPerformed
+
+    private void jTmateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTmateriasMouseClicked
+        
+        
+        
+    }//GEN-LAST:event_jTmateriasMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBlimpiar;
@@ -317,5 +327,13 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             Utilidades.mostrarDialogoTemporal("Error", "Ingrese solo numeros", 1000);
 
         }
+    }
+    
+    private void limpiar(){
+        
+        jtCodigo.setText("");
+        jtNombre.setText("");
+        jtAnio.setText("");
+        jrEstado.setSelected(false);
     }
 }
