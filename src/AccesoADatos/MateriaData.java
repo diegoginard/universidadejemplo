@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
 import Entidades.Materia;
 import Vistas.Utilidades;
 import java.util.List;
@@ -19,8 +18,7 @@ public class MateriaData {
 
     public MateriaData() {
     
-        con = Conexion.getConexion();
-    
+        con = Conexion.getConexion(); 
     }
     
     public void guardarMateria(Materia mat){
@@ -43,16 +41,13 @@ public class MateriaData {
             if (rs.next()) {
 
                 mat.setIdMateria(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Materia Guardada ");
-            
+                Utilidades.mostrarDialogoTemporal("Tabla materia", "Materia Guardada ", 2000);
             }
             
             ps.close();
 
-        } catch (SQLException ex) {
-            
-            JOptionPane.showMessageDialog(null, "Error  al acceder a la tabla materia "+ex.getMessage());
-        
+        } catch (SQLException ex) {    
+            Utilidades.mostrarDialogoTemporal("Tabla materia",  "Error al acceder a la tabla materia " + ex.getMessage(), 2000);
         }
    
     } 
@@ -119,7 +114,7 @@ public class MateriaData {
     
     public void eliminarMateria(int id) {
 
-        String sql = "UPDATE materia SET estado = 0 WHERE idMateria = ?";
+        String sql = "DELETE FROM materia WHERE idMateria = ?";
 
         try {
 
@@ -143,7 +138,7 @@ public class MateriaData {
         
         ArrayList<Materia> materiaList = new ArrayList<>();
         
-        String sql="SELECT idMateria, nombre, año, estado FROM materia WHERE estado = 1";
+        String sql="SELECT idMateria, nombre, año, estado FROM materia";
                 
         try {
             
@@ -165,9 +160,9 @@ public class MateriaData {
             ps.close();
             
         } catch (SQLException ex) {    
-            JOptionPane.showMessageDialog(null,"Error al conectar con tabla materia"+ex.getMessage());
+            Utilidades.mostrarDialogoTemporal("Tabla materia", "Error al acceder a la tabla materia " + ex.getMessage(), 2000);
         }
           
         return materiaList;   
-    }     
+    } 
 }

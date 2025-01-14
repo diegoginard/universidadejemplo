@@ -338,6 +338,8 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         if (buscarAlumnoDni != null) {
 
             cargarAlumnosXdni(dni);
+        }else {
+            Utilidades.mostrarDialogoTemporal("Tabla alumno", "Alumno no encontrada", 2000);
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 

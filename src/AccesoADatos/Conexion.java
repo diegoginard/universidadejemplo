@@ -1,11 +1,11 @@
 
 package AccesoADatos;
 
+import Vistas.Utilidades;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 
 public class Conexion {
@@ -29,12 +29,13 @@ public class Conexion {
 
                 connection = DriverManager.getConnection(URL + DB , USUARIO , PASSWORD);
 
-                JOptionPane.showMessageDialog(null, "Conectado ");
+                 Utilidades.mostrarDialogoTemporal("Base de datos", "Conectado ", 2000);
 
             } catch (ClassNotFoundException ex) {              
-                JOptionPane.showMessageDialog(null, "Error al cargar los Drivers: "+ex.getMessage());
+                Utilidades.mostrarDialogoTemporal("Base de datos", "Error al cargar los Drivers: " + ex.getMessage(), 2000);
+                
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error a Conectarse a la Base Datos"+ex.getMessage());
+                Utilidades.mostrarDialogoTemporal("Base de datos", "Error a Conectarse a la Base Datos" + ex.getMessage(), 2000);
             } 
         }
         
@@ -44,6 +45,6 @@ public class Conexion {
 
     PreparedStatement prepareStatement(String sql, int RETURN_GENERATED_KEYS) {
         
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }    
 }
