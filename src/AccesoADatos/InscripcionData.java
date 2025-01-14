@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import Entidades.Alumno;
 import Entidades.Inscripcion;
 import Entidades.Materia;
+import Vistas.Utilidades;
 
 public class InscripcionData {
     
@@ -46,17 +47,14 @@ public class InscripcionData {
                 
                 ins.setIdInscripcion(rs.getInt(1));
                 
-                JOptionPane.showMessageDialog(null, "Inscripcion exitosa");
-            
+                Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Inscripcion exitosa", 2000); 
             }
             
             ps.close();
 
-        } catch (SQLException ex) {
-            
-            JOptionPane.showMessageDialog(null, "Error  al acceder a la tabla inscripcion "
-            +ex.getMessage());
-        
+        } catch (SQLException ex) {           
+             Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Error  al acceder a la tabla inscripcion "
+                     + ex.getMessage(), 2000);
         } 
     }
     
@@ -64,7 +62,7 @@ public class InscripcionData {
         
         ArrayList<Inscripcion> inscripcionList = new ArrayList<>();
         
-            String sql="SELECT * FROM inscripcion";
+        String sql="SELECT * FROM inscripcion";
                 
         try {
 
@@ -82,14 +80,13 @@ public class InscripcionData {
                 ins.setAlumno(alu);
                 ins.setMateria(mat);
                 inscripcionList.add(ins);
-
             }
 
             ps.close();
 
         } catch (SQLException ex) {
-
-            JOptionPane.showMessageDialog(null, "Error al conectar con tabla materia" + ex.getMessage());
+           Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Error  al acceder a la tabla inscripcion "
+                     + ex.getMessage(), 2000);
         }
 
         return inscripcionList;
@@ -116,16 +113,14 @@ public class InscripcionData {
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
                 insc.setNota(rs.getDouble("nota"));
-                inscripcionListAlu.add(insc);
-                    
+                inscripcionListAlu.add(insc);      
             }
             
             ps.close();            
             
-        } catch (SQLException ex) {
-            
-            JOptionPane.showMessageDialog(null, "Error al Obtener Inscripcion por Alumno "+ex.getMessage());
-
+        } catch (SQLException ex) {  
+            Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Error  al acceder a la tabla inscripcion "
+                     + ex.getMessage(), 2000);
         }
                
         return inscripcionListAlu;
@@ -158,13 +153,11 @@ public class InscripcionData {
             ps.close();
 
         } catch (SQLException ex) {
-
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno " + ex.getMessage());
-
+            Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Error  al acceder a la tabla inscripcion "
+                     + ex.getMessage(), 2000);
         }
 
         return materiasCursadas;
-
     }
     
     public List<Materia> ObtenerMateriasNOCursadas(int idAlumno) {
@@ -193,9 +186,8 @@ public class InscripcionData {
             ps.close();
 
         } catch (SQLException ex) {
-
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla " + ex.getMessage());
-
+            Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Error  al acceder a la tabla inscripcion "
+                     + ex.getMessage(), 2000);
         }
 
         return materiasNOCursadas;
@@ -225,20 +217,17 @@ public class InscripcionData {
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(rs.getBoolean("estado"));
-                alumnoMateria.add(alumno);
-                
+                alumnoMateria.add(alumno); 
             }
             
             ps.close(); 
             
-        } catch (SQLException ex) {
-            
-            JOptionPane.showMessageDialog(null, "Error al Obtener Materia por Alumno "+ex.getMessage());
-            
+        } catch (SQLException ex) {   
+            Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Error  al acceder a la tabla inscripcion "
+                     + ex.getMessage(), 2000);    
         }
         
-         return alumnoMateria;
-                
+         return alumnoMateria;               
     }
     
     public void actualizarNota(int idAlumno, int idMateria, double nota ){
@@ -258,16 +247,14 @@ public class InscripcionData {
             
             if (filas>0) {
                 
-                JOptionPane.showMessageDialog(null, "Nota Actualizada Corectamente ");
-                
+                Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Nota Actualizada Corectamente", 2000);
             }
             
             ps.close();        
             
-        } catch (SQLException ex) {
-            
-            JOptionPane.showMessageDialog(null, "Error al Actualizar Nota "+ex.getMessage());
-
+        } catch (SQLException ex) {    
+            Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Error  al acceder a la tabla inscripcion "
+                     + ex.getMessage(), 2000);
         }      
     }
     
@@ -285,16 +272,14 @@ public class InscripcionData {
             
             if (filas>0) {
                 
-                JOptionPane.showMessageDialog(null, "Inscripcion borrada Correctamente ");
-                
+                 Utilidades.mostrarDialogoTemporal("Tabla Inscripcion",  "Inscripcion borrada Correctamente eliminada", 2000);                
             }
             
             ps.close();
             
-        } catch (SQLException ex) {
-            
-            JOptionPane.showMessageDialog(null, "Error al Borrar Inscripcion "+ex.getMessage());
-            
-        }  
+        } catch (SQLException ex) {    
+            Utilidades.mostrarDialogoTemporal("Tabla Inscripcion", "Error  al acceder a la tabla inscripcion "
+                     + ex.getMessage(), 2000);
+        }    
     }
 }
