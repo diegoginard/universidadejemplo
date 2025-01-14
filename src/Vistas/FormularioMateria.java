@@ -8,16 +8,31 @@ import javax.swing.JOptionPane;
 import AccesoADatos.MateriaData;
 import Entidades.Materia;
 import java.awt.event.KeyEvent;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 
 public class FormularioMateria extends javax.swing.JInternalFrame {
-
+    
+    private MateriaData materiaDat = new MateriaData();
+    
     public FormularioMateria() {
         
-        initComponents();  
+        initComponents();
+        armarCabecera();
+        jBmodificar.setEnabled(false);
+        jbEliminar.setEnabled(false);
+        cargarMaterias();
     }
-    
-    MateriaData md = new MateriaData();
+
+    private DefaultTableModel modelo = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+
+            return false;
+        }
+    };
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,9 +53,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jtNombre = new javax.swing.JTextField();
-        jtAnio = new javax.swing.JTextField();
-        jrEstado = new javax.swing.JRadioButton();
+        jTnombre = new javax.swing.JTextField();
+        jTanio = new javax.swing.JTextField();
+        jRestado = new javax.swing.JRadioButton();
         jBlimpiar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
@@ -99,25 +114,25 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jLabel5.setText("Estado");
         jDesktopPane1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
-        jtNombre.setBackground(new java.awt.Color(255, 255, 255));
-        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTnombre.setBackground(new java.awt.Color(255, 255, 255));
+        jTnombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtNombreKeyTyped(evt);
+                jTnombreKeyTyped(evt);
             }
         });
-        jDesktopPane1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 129, -1));
+        jDesktopPane1.add(jTnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 129, -1));
 
-        jtAnio.setBackground(new java.awt.Color(255, 255, 255));
-        jtAnio.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTanio.setBackground(new java.awt.Color(255, 255, 255));
+        jTanio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtAnioKeyTyped(evt);
+                jTanioKeyTyped(evt);
             }
         });
-        jDesktopPane1.add(jtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 39, -1));
+        jDesktopPane1.add(jTanio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 39, -1));
 
-        jrEstado.setBackground(new java.awt.Color(204, 204, 204));
-        jrEstado.setContentAreaFilled(false);
-        jDesktopPane1.add(jrEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
+        jRestado.setBackground(new java.awt.Color(204, 204, 204));
+        jRestado.setContentAreaFilled(false);
+        jDesktopPane1.add(jRestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, -1, -1));
 
         jBlimpiar.setForeground(new java.awt.Color(0, 0, 0));
         jBlimpiar.setText("Limpiar");
@@ -196,62 +211,60 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         
-        try {
-            
-            Materia buscarMat = md.buscarMateria(Integer.parseInt(jtCodigo.getText()));
+            int id = Integer.parseInt(jtCodigo.getText());
+            Materia buscarMat = materiaDat.buscarMateria(Integer.parseInt(jtCodigo.getText()));
 
             if (buscarMat != null) {
 
-                jtNombre.setText(buscarMat.getNombre());
-                jtAnio.setText(buscarMat.getAnio() + "");
-                jrEstado.setSelected(buscarMat.isEstado());
+                jTnombre.setText(buscarMat.getNombre());
+                jTanio.setText(buscarMat.getAnio() + "");
+                jRestado.setSelected(buscarMat.isEstado());
+                
+                
+            }else {
+                Utilidades.mostrarDialogoTemporal("Tabla materia", "Materia no encontrada", 2000);
             }
-            
-        }catch(NumberFormatException ex) {            
-            JOptionPane.showMessageDialog(null, "Ingrese un numero entero");       
-        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
- 
+
         Materia guardarMat = new Materia();
 
-        try {
+        if (!jtCodigo.getText().isEmpty() && !jTnombre.getText().isEmpty() && jTanio.getText().isEmpty()) {
             
             guardarMat.setIdMateria(Integer.parseInt(jtCodigo.getText()));
-            guardarMat.setNombre(jtNombre.getText());
+            guardarMat.setNombre(jTnombre.getText());
 
-            int anioIn= Integer.parseInt(jtAnio.getText());
-            
-            if( anioIn>=1 && anioIn<=6) {
-                  
-                guardarMat.setAnio(anioIn);  
-            
-            }else{
-      
-                JOptionPane.showMessageDialog(null, "Ingrese Años de Materias entre: 1 y 6 ");
+            int anioIn = Integer.parseInt(jTanio.getText());
+
+            if (anioIn >= 1 && anioIn <= 6) {
+
+                guardarMat.setAnio(anioIn);
+
+            } else {
+
+                Utilidades.mostrarDialogoTemporal("Error", "Ingrese Años de Materias entre: 1 y 6 ", 2000);
             }
-           
-        guardarMat.setEstado(jrEstado.isSelected());
-        md.guardarMateria(guardarMat);
-        
-        } catch (NumberFormatException e) {        
-            JOptionPane.showMessageDialog(null, "Ingrese En las Casillas los Datos Correspondientes: \n"
-                    + " Codigo, Año Numero Enteros \n"
-                    + " Nombre: Ingrese nombres que contengan letras validos ");
-        }        
+
+            guardarMat.setEstado(jRestado.isSelected());
+            materiaDat.guardarMateria(guardarMat);
+            limpiar();
+            
+        } else {
+            
+             Utilidades.mostrarDialogoTemporal("Error", "Debe ingresar todos los datos", 2000);
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        
-        md.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
-        
+
+        materiaDat.eliminarMateria(Integer.parseInt(jtCodigo.getText()));
+
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jBlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarActionPerformed
         
-        limpiar();
-       
+        limpiar();   
     }//GEN-LAST:event_jBlimpiarActionPerformed
 
     private void jtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCodigoKeyTyped
@@ -259,26 +272,42 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
        soloNumeros(evt);
     }//GEN-LAST:event_jtCodigoKeyTyped
     
-    private void jtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyTyped
+    private void jTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombreKeyTyped
         
         soloLetras(evt);
-    }//GEN-LAST:event_jtNombreKeyTyped
+    }//GEN-LAST:event_jTnombreKeyTyped
 
-    private void jtAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtAnioKeyTyped
+    private void jTanioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTanioKeyTyped
         
         soloNumeros(evt);
-    }//GEN-LAST:event_jtAnioKeyTyped
+    }//GEN-LAST:event_jTanioKeyTyped
 
     private void jBmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBmodificarActionPerformed
         
+        Materia materia = new Materia();
         
+        materia.setIdMateria(Integer.parseInt(jtCodigo.getText()));
+        materia.setNombre(jTnombre.getText());
+        materia.setAnio(Integer.parseInt(jTanio.getText()));
+        materia.setEstado(jRestado.isSelected());
         
+        materiaDat.modificarMateria(materia);
+        limpiar();
     }//GEN-LAST:event_jBmodificarActionPerformed
 
     private void jTmateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTmateriasMouseClicked
         
+        jBmodificar.setEnabled(true);
+        jbBuscar.setEnabled(false);
+        jbEliminar.setEnabled(true);
+        jbGuardar.setEnabled(false);
         
+        int fila = jTmaterias.getSelectedRow();
         
+        jtCodigo.setText(jTmaterias.getValueAt(fila, 0) + "");
+        jTnombre.setText(jTmaterias.getValueAt(fila, 1) + "");
+        jTanio.setText(jTmaterias.getValueAt(fila, 2) + "");
+        jRestado.setSelected((boolean) jTmaterias.getValueAt(fila,3));
     }//GEN-LAST:event_jTmateriasMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -290,18 +319,40 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JRadioButton jRestado;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTanio;
     private javax.swing.JTable jTmaterias;
+    private javax.swing.JTextField jTnombre;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JRadioButton jrEstado;
-    private javax.swing.JTextField jtAnio;
     private javax.swing.JTextField jtCodigo;
-    private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
+    
+    private void armarCabecera() {
 
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Anio");
+        modelo.addColumn("estado");
+        jTmaterias.setModel(modelo);
+    }
+    
+    private void cargarMaterias() {
+
+        modelo.setRowCount(0);
+        
+        List<Materia> materias = materiaDat.ListarMaterias();
+
+        for (Materia materia : materias) {
+
+            modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnio(),
+                materia.isEstado()});
+        }
+    }
+    
     private void soloLetras(KeyEvent evt) {
 
         char validar = evt.getKeyChar();
@@ -325,15 +376,21 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             evt.consume();
 
             Utilidades.mostrarDialogoTemporal("Error", "Ingrese solo numeros", 1000);
-
         }
     }
     
     private void limpiar(){
         
         jtCodigo.setText("");
-        jtNombre.setText("");
-        jtAnio.setText("");
-        jrEstado.setSelected(false);
+        jTnombre.setText("");
+        jTanio.setText("");
+        jRestado.setSelected(false);
+        
+        jBmodificar.setEnabled(false);
+        jbBuscar.setEnabled(true);
+        jbEliminar.setEnabled(false);
+        jbGuardar.setEnabled(true);
+        
+        cargarMaterias();
     }
 }

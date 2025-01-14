@@ -282,7 +282,6 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
                 modelo.addRow(new Object[]{mat.getIdMateria(),
                     mat.getNombre(), mat.getAnio()});
-
             }
         }
 

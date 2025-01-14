@@ -416,6 +416,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         jbEliminar.setEnabled(true);
         jbGuardar.setEnabled(false);
         jbBuscar.setEnabled(false);
+        
         int fila = jTlistaAlum.getSelectedRow();
         
         jTidAlumno.setText(jTlistaAlum.getValueAt(fila, 0) + "");
