@@ -3,7 +3,6 @@ package Vistas;
 import Entidades.Inscripcion;
 import Entidades.Materia;
 import Entidades.Alumno;
-import AccesoADatos.MateriaData;
 import AccesoADatos.InscripcionData;
 import AccesoADatos.AlumnoData;
 import java.awt.Graphics;
@@ -11,11 +10,13 @@ import java.awt.HeadlessException;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class CargarNotas extends javax.swing.JInternalFrame {
-
+    
+    private InscripcionData inscripDat = new InscripcionData();
+    private AlumnoData alumDat = new AlumnoData();
+    
     private DefaultTableModel modelo = new DefaultTableModel(){
         
         boolean[] canEdit = new boolean[]{
@@ -36,10 +37,6 @@ public class CargarNotas extends javax.swing.JInternalFrame {
         jbGuardar.setEnabled(false);
     }
     
-    InscripcionData id = new InscripcionData();
-    AlumnoData ad = new AlumnoData();
-    MateriaData md = new MateriaData();
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -151,9 +148,8 @@ public class CargarNotas extends javax.swing.JInternalFrame {
 
             if (nota >= 0 && nota <= 10) {
 
-                id.actualizarNota(idAlumno, idMateria, nota);
-                cargarLista();
-                
+                inscripDat.actualizarNota(idAlumno, idMateria, nota);
+                cargarLista();    
             } else {
 
                 Utilidades.mostrarDialogoTemporal("Error", "Ingrese un valor entre 0 y 10", 2000);
@@ -193,7 +189,7 @@ public class CargarNotas extends javax.swing.JInternalFrame {
 
     private void cargarCombo() {
 
-        List<Alumno> alumnos = ad.listarAlumnos();
+        List<Alumno> alumnos = alumDat.listarAlumnos();
 
         for (Alumno alumno : alumnos) {
 
@@ -207,7 +203,7 @@ public class CargarNotas extends javax.swing.JInternalFrame {
             
             Alumno alumno = (Alumno) jcbListaAlumnos.getSelectedItem();
             int idAlumno = alumno.getIdAlumno();
-            List<Inscripcion> inscri = id.ObternerInscripcionesPorAlumno(idAlumno);
+            List<Inscripcion> inscri = inscripDat.ObternerInscripcionesPorAlumno(idAlumno);
             
 
             for (Inscripcion ins: inscri){
