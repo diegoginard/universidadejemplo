@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import Entidades.Alumno;
 import Entidades.Inscripcion;
 import Entidades.Materia;
@@ -75,10 +74,10 @@ public class InscripcionData {
                 Inscripcion ins = new Inscripcion();
                 ins.setIdInscripcion(rs.getInt("IdInscripto"));
                 ins.setNota(rs.getDouble("Nota"));
-                alu = ad.buscarAlumno(rs.getInt("idAlumno"));
-                mat = md.buscarMateria(rs.getInt("idMateria"));
-                ins.setAlumno(alu);
-                ins.setMateria(mat);
+                Alumno alumno = ad.buscarAlumno(rs.getInt("idAlumno"));
+                Materia materia = md.buscarMateria(rs.getInt("idMateria"));
+                ins.setAlumno(alumno);
+                ins.setMateria(materia);
                 inscripcionList.add(ins);
             }
 
@@ -108,10 +107,10 @@ public class InscripcionData {
                 
                 Inscripcion insc=new Inscripcion();
                 insc.setIdInscripcion(rs.getInt("idInscripto"));
-                alu=ad.buscarAlumno(rs.getInt("idAlumno"));
-                mat=md.buscarMateria(rs.getInt("idMateria"));
-                insc.setAlumno(alu);
-                insc.setMateria(mat);
+                Alumno alumno=ad.buscarAlumno(rs.getInt("idAlumno"));
+                Materia materia=md.buscarMateria(rs.getInt("idMateria"));
+                insc.setAlumno(alumno);
+                insc.setMateria(materia);
                 insc.setNota(rs.getDouble("nota"));
                 inscripcionListAlu.add(insc);      
             }

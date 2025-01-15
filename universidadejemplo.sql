@@ -46,3 +46,4 @@ CREATE TABLE `materia` (
 
 INSERT INTO `materia` VALUES (1,'Matematica',1,1),(2,'Lengua',2,1),(3,'Fisica',3,1),(4,'Geografia',4,1),(5,'Biologia',5,1),(6,'Etica',4,1),(7,'Civica',3,1),(8,'Ingles',1,1);
 
+SELECT * FROM inscripcion WHERE idAlumno = 2

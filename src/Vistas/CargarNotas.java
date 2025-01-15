@@ -19,7 +19,7 @@ public class CargarNotas extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel(){
         
         boolean[] canEdit = new boolean[]{
-                    false, false, true
+                    false, true
             };
 
         @Override
@@ -122,7 +122,7 @@ public class CargarNotas extends javax.swing.JInternalFrame {
 
         jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 363, 149));
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 385, 338));
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 390, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,13 +130,11 @@ public class CargarNotas extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         dispose();
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jcbListaAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbListaAlumnosItemStateChanged
 
         cargarLista();
-
     }//GEN-LAST:event_jcbListaAlumnosItemStateChanged
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
@@ -145,25 +143,24 @@ public class CargarNotas extends javax.swing.JInternalFrame {
 
         try {
 
-            Materia mat = (Materia) jtAlumnoNota.getValueAt(selec, 1);
-            int idA = (Integer) jtAlumnoNota.getValueAt(selec, 0);
-            int idM = mat.getIdMateria();
-            double nota = Double.parseDouble(jtAlumnoNota.getValueAt(selec, 2).toString());
+            Materia materia = (Materia) jtAlumnoNota.getValueAt(selec, 0);
+            Alumno alumno = (Alumno) jcbListaAlumnos.getSelectedItem();
+            int idMateria = materia.getIdMateria();
+            int idAlumno = alumno.getIdAlumno();
+            double nota = Double.parseDouble(jtAlumnoNota.getValueAt(selec, 1).toString());
 
             if (nota >= 0 && nota <= 10) {
 
-                id.actualizarNota(idA, idM, nota);
-
+                id.actualizarNota(idAlumno, idMateria, nota);
+                cargarLista();
+                
             } else {
 
                 JOptionPane.showMessageDialog(null, "Ingrese un valor entre 0 y 10 ");
-
             }
             
         } catch (HeadlessException | NumberFormatException ex) {
-
             JOptionPane.showMessageDialog(null, "Solo debe ingresar numeros entre 0 y 10");
-
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -186,37 +183,34 @@ public class CargarNotas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void armarCabecera() {
-
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Nombre");
+        
+        modelo.addColumn("Materia");
         modelo.addColumn("Nota");
         jtAlumnoNota.setModel(modelo);
-
     }
 
     private void cargarCombo() {
 
-        List<Alumno> cblistaAlu = ad.listarAlumnos();
+        List<Alumno> alumnos = ad.listarAlumnos();
 
-        for (int i = 0; i < cblistaAlu.size(); i++) {
+        for (Alumno alumno : alumnos) {
 
-            jcbListaAlumnos.addItem(new Alumno(cblistaAlu.get(i).getIdAlumno(),cblistaAlu.get(i).getDni(),
-                    cblistaAlu.get(i).getApellido(),
-                    cblistaAlu.get(i).getNombre()));
-
+            jcbListaAlumnos.addItem(new Alumno(alumno.getIdAlumno(),alumno.getDni(),
+                    alumno.getApellido(),alumno.getNombre()));
         }
     }
         public void cargarLista(){
             
-            Alumno itemSelec = (Alumno) jcbListaAlumnos.getSelectedItem();
-            int selectID = itemSelec.getIdAlumno();
-            List<Inscripcion> inscri = id.ObternerInscripcionesPorAlumno(selectID);
             modelo.setRowCount(0);
+            
+            Alumno alumno = (Alumno) jcbListaAlumnos.getSelectedItem();
+            int idAlumno = alumno.getIdAlumno();
+            List<Inscripcion> inscri = id.ObternerInscripcionesPorAlumno(idAlumno);
+            
 
             for (Inscripcion ins: inscri){
 
-                modelo.addRow(new Object[]{ ins.getAlumno().getIdAlumno(), ins.getMateria(),ins.getNota()});
-              
+                modelo.addRow(new Object[]{ins.getMateria(),ins.getNota()});              
         }
     }
 }

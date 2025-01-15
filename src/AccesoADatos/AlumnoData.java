@@ -167,7 +167,7 @@ public class AlumnoData {
         
         try {
             
-            String sql = "SELECT * FROM alumno WHERE estado = 1 ";
+            String sql = "SELECT * FROM alumno";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
@@ -231,7 +231,7 @@ public class AlumnoData {
                 alumno.setIdAlumno(id); 
                 alumno.setApellido(rs.getString ("Apellido"));
                 alumno.setNombre(rs.getString ("nombre"));
-                 alumno.setDni(rs.getInt("dni"));
+                alumno.setDni(rs.getInt("dni"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(rs.getBoolean("estado"));
                 
