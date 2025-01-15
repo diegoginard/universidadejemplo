@@ -156,11 +156,13 @@ public class CargarNotas extends javax.swing.JInternalFrame {
                 
             } else {
 
-                JOptionPane.showMessageDialog(null, "Ingrese un valor entre 0 y 10 ");
+                Utilidades.mostrarDialogoTemporal("Error", "Ingrese un valor entre 0 y 10", 2000);
+                cargarLista();
             }
             
         } catch (HeadlessException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Solo debe ingresar numeros entre 0 y 10");
+            Utilidades.mostrarDialogoTemporal("Error", "Solo debe ingresar numeros", 2000);
+            cargarLista();
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
