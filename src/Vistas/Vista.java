@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
 import AccesoADatos.Conexion;
+import javax.swing.JInternalFrame;
+
 
 public class Vista extends javax.swing.JFrame {
     
@@ -14,11 +16,10 @@ public class Vista extends javax.swing.JFrame {
     public Vista() {
         
         initComponents();
-
-        this.setLocationRelativeTo(null);
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/colegio.png")).getImage());            
-        con = Conexion.getConexion();     
         
+        this.setLocationRelativeTo(null);
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/colegio2.png")).getImage());            
+        con = Conexion.getConexion();        
     }
 
     @SuppressWarnings("unchecked")
@@ -165,56 +166,33 @@ public class Vista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmForAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmForAlumnoActionPerformed
-         
-        escritorio.removeAll();
-        escritorio.repaint();
-        GestionAlumno gestionp=new GestionAlumno();
-        gestionp.setVisible(true);
-        escritorio.add(gestionp);
-        escritorio.moveToFront(gestionp);
         
+        GestionAlumno ga = new GestionAlumno();
+        mostrarFormulario(ga);       
     }//GEN-LAST:event_jmForAlumnoActionPerformed
 
     private void jmForMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmForMateriaActionPerformed
-        
-        escritorio.removeAll();
-        escritorio.repaint();
+
         FormularioMateria fm = new FormularioMateria();
-        fm.setVisible(true);
-        escritorio.add(fm);
-        escritorio.moveToFront(fm);
-        
+        mostrarFormulario(fm);
     }//GEN-LAST:event_jmForMateriaActionPerformed
 
     private void jmCAMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCAMateriaActionPerformed
         
-        escritorio.removeAll();
-        escritorio.repaint();
         ListadoAlumnoPorMateria apm = new ListadoAlumnoPorMateria();
-        apm.setVisible(true);
-        escritorio.add(apm);
-        escritorio.moveToFront(apm);
-        
+        mostrarFormulario(apm);
     }//GEN-LAST:event_jmCAMateriaActionPerformed
 
     private void jmManeIncripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManeIncripcionActionPerformed
-       
-        escritorio.removeAll();
-        escritorio.repaint();
+
         FormularioInscripcion fi = new FormularioInscripcion();
-        fi.setVisible(true);
-        escritorio.add(fi);
-        escritorio.moveToFront(fi);
+        mostrarFormulario(fi);
     }//GEN-LAST:event_jmManeIncripcionActionPerformed
 
     private void jmManiNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManiNotasActionPerformed
-        
-        escritorio.removeAll();
-        escritorio.repaint();
+    
         CargarNotas cn = new CargarNotas();
-        cn.setVisible(true);
-        escritorio.add(cn);
-        escritorio.moveToFront(cn);
+        mostrarFormulario(cn);
     }//GEN-LAST:event_jmManiNotasActionPerformed
 
     private void jmSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSalirMouseClicked
@@ -248,4 +226,13 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jmMateria;
     private javax.swing.JMenu jmSalir;
     // End of variables declaration//GEN-END:variables
+
+    private void mostrarFormulario(JInternalFrame formulario) {
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        formulario.setVisible(true);
+        escritorio.add(formulario);
+        escritorio.moveToFront(formulario);
+    }
 }

@@ -75,14 +75,20 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(102, 102, 102));
         setBorder(null);
         setTitle("Gestor de alumnos");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/alumno1.png"))); // NOI18N
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/alumno2.png"))); // NOI18N
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(430, 530));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jDesktopPane1.setPreferredSize(null);
+        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jrEstado.setContentAreaFilled(false);
+        jDesktopPane1.add(jrEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
 
         fechaNacabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         fechaNacabel4.setText("Fecha de Nacimiento");
+        jDesktopPane1.add(fechaNacabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 23));
 
         jBlimpiar.setText("Limpiar");
         jBlimpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -94,6 +100,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 jBlimpiarActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jBlimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 90, -1));
 
         jbEliminar.setText("Eliminar");
         jbEliminar.setMaximumSize(new java.awt.Dimension(81, 23));
@@ -103,6 +110,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 jbEliminarActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 90, -1));
 
         jbGuardar.setText("Guardar");
         jbGuardar.setMaximumSize(new java.awt.Dimension(81, 23));
@@ -112,6 +120,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 jbGuardarActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 90, -1));
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +128,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 jbSalirActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 74, -1));
 
         jBmodificar.setText("Modificar");
         jBmodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +136,7 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 jBmodificarActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jBmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 90, -1));
 
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,42 +144,52 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
                 jbBuscarActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
 
         jLtitulo.setBackground(new java.awt.Color(0, 0, 0));
         jLtitulo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLtitulo.setText("Gestionar Alumno");
         jLtitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jDesktopPane1.add(jLtitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 311, 33));
 
         jtDni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtDniKeyTyped(evt);
             }
         });
+        jDesktopPane1.add(jtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 103, -1));
 
         jLdni.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLdni.setText("Documento :");
+        jDesktopPane1.add(jLdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtApellidoKeyTyped(evt);
             }
         });
+        jDesktopPane1.add(jtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 202, -1));
 
         jLapellido.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLapellido.setText("Apellido :");
+        jDesktopPane1.add(jLapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         jLnombre.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLnombre.setText("Nombre :");
+        jDesktopPane1.add(jLnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtNombreKeyTyped(evt);
             }
         });
+        jDesktopPane1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 202, -1));
 
         jLestado.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLestado.setText("Estado");
+        jDesktopPane1.add(jLestado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jDesktopPane1.add(jdFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 161, -1));
 
         jTlistaAlum.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,144 +209,13 @@ public class GestionAlumno extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTlistaAlum);
 
+        jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 370, 130));
+        jDesktopPane1.add(jTidAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 150, 24, -1));
+
         jLabel1.setText("ID");
+        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 113, -1, -1));
 
-        jDesktopPane1.setLayer(jrEstado, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(fechaNacabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jBlimpiar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jbEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jbSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jBmodificar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jbBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLtitulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jtDni, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLdni, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jtApellido, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLapellido, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLnombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLestado, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jdFecha, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jTidAlumno, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLdni)
-                        .addGap(39, 39, 39)
-                        .addComponent(jtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(jbBuscar))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLestado)
-                        .addGap(71, 71, 71)
-                        .addComponent(jrEstado))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(fechaNacabel4)
-                        .addGap(32, 32, 32)
-                        .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jBmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(300, 300, 300)
-                        .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jLnombre)
-                                .addGap(59, 59, 59)
-                                .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jLapellido)
-                                .addGap(59, 59, 59)
-                                .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jTidAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addGap(8, 8, 8)))))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLdni)
-                    .addComponent(jtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbBuscar))
-                .addGap(17, 17, 17)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLapellido)
-                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
-                .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLnombre)
-                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTidAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLestado)
-                    .addComponent(jrEstado))
-                .addGap(10, 10, 10)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaNacabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBmodificar))
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jbSalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

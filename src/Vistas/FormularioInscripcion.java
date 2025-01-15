@@ -66,7 +66,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
 
         setBorder(null);
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Administracion1.png"))); // NOI18N
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Administracion2.png"))); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -161,7 +161,7 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
         });
         jDesktopPane1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 335, 63, -1));
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 380));
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
