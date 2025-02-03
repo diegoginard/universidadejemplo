@@ -10,8 +10,7 @@ public class universidadejemplo {
 
     public static void main(String[] args) {
         
-        InscripcionData id = new InscripcionData();
-        
+//        InscripcionData id = new InscripcionData();
 //        id.ObtenerInscripciones();
 //        AlumnoData ad= new AlumnoData();
 //        System.out.println(id.ObtenerInscripciones());
